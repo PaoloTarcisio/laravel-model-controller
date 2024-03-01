@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+//Controllers
+
+use App\Http\Controllers\Guest\PageController;
+use App\Http\Controllers\Guest\MovieController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
+Route::get('/movies/{id}', [MovieController::class, 'show'])->name('movies.show');
